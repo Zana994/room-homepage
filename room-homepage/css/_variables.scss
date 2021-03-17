@@ -1,0 +1,39 @@
+@font-face {
+    font-family: Spartan-Medium;
+    src: url(fonts/Spartan/static/Spartan-Medium.ttf);
+}
+@font-face {
+    font-family: Spartan-SemiBold;
+    src: url(fonts/Spartan/static/Spartan-SemiBold.ttf);
+}
+@font-face {
+    font-family: Spartan-Bold;
+    src: url(fonts/Spartan/static/Spartan-Bold.ttf);
+}
+@font-face {
+    font-family: Spartan-ExtraLight;
+    src: url(fonts/Spartan/static/Spartan-ExtraLight.ttf);
+}
+
+$black-text: hsl(0, 0%, 0%);
+$white-text: hsl(0, 0%, 100%);
+$grey-text: hsl(0, 0%, 63%);
+$dark-grey-text: hsl(0, 0%, 27%);
+
+@mixin flex-pos($content, $items) {
+    display: flex;
+    justify-content: $content;
+    align-items: $items;   
+}
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
+}
+@mixin bgd-image($url, $x, $y, $size) {
+    background: $url $x $y no-repeat;
+    background-size: $size; 
+}
+@mixin text($family, $color) {
+    font-family: $family;
+    color: $color;
+}

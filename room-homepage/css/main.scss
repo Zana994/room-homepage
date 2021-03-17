@@ -1,0 +1,381 @@
+@import "./reset";
+@import "./variables";
+
+/* GENERAL STYLE */
+
+html { height: 100%;}
+body {
+    min-height: 100%;
+    font-size: 12px;
+}
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+/* HEADER */
+
+header {
+    @include dimensions(100%, 75px);
+    position: absolute;
+    top: 0;
+    z-index: 11;
+    background-color: transparent;
+    @include flex-pos(flex-start, center);
+    .logo {
+        @include dimensions(62px, 14px);
+        background: url(images/logo.svg) center center no-repeat;
+        margin-left: 4.5rem;
+    }
+    nav { 
+        display: block;
+        width: 20%;
+        margin-left: 4rem;
+    }
+    .nav {
+        @include flex-pos(space-between, center);
+        li > a {
+            display: block;
+            @include dimensions(45px, 30px);
+            @include text(Spartan-Medium, $white-text);
+            line-height: 30px;
+            position: relative;
+            &::after {
+                content: '';
+                height: 1px;
+                background-color: $white-text;
+                position: absolute;
+                bottom: 0;
+                display: none;  
+            }
+            &:hover {
+                cursor: pointer;
+                &::after { display: block;}
+            }
+        } 
+    }
+}
+
+ul.nav {
+    li:nth-child(1) {
+        a::after { 
+            width: 25px;
+            right: 33%;
+        }
+    }
+    li:nth-child(2) {
+        a::after { 
+            right: 43%;
+            width: 20px;
+        }
+    }
+    li:nth-child(3) {
+        a::after { 
+            right: 30%;
+            width: 25px;
+        }
+    }
+    li:nth-child(4) {
+        a::after { 
+            right: 8%;
+            width: 35px;
+        }
+    }
+}
+
+/* SLIDER SECTION */
+.slider { 
+    width: 100%;
+    position: relative;
+}
+.slider-container {
+    width: 100%;
+    position: relative;
+    .slide {
+        width: 100%;
+        @include flex-pos(flex-start, center);
+    }
+    .img-1, .img-2, .img-3 { @include dimensions(60%, 450px);}
+    .img-1 { @include bgd-image(url(images/desktop-image-hero-1.jpg), center, center, cover);}
+    .img-2 { @include bgd-image(url(images/desktop-image-hero-2.jpg), center, center, cover);}
+    .img-3 { @include bgd-image(url(images/desktop-image-hero-3.jpg), center, center, cover);}
+    .content-1, .content-2, .content-3 {
+        width: 35%;
+        h2 {
+            @include text(Spartan-Bold, $black-text);
+            font-size: 1.7rem;
+            margin-left: 3.5rem;
+        }
+        p {
+            @include text(Spartan-Medium, $grey-text);
+            margin: 1rem 0 0 3.5rem;
+            line-height: 1.2rem;
+            font-size: 11px;
+        }
+    } 
+    div.second, div.third {
+        display: none;
+    }
+    .shop {
+        margin: 2rem 0 0 3.5rem;
+        a { 
+            @include flex-pos(space-between, center);
+            width: 65%;
+            &:hover {
+                cursor: pointer;
+                h4 { color: $grey-text;}
+                .shop-arrow { background: url(images/grey-arrow.svg) center center no-repeat;}
+            }
+        }
+        h4 {
+            @include text(Spartan-SemiBold, $black-text);
+            text-transform: uppercase;
+            letter-spacing: 0.6rem;
+        }
+        .shop-arrow {
+            display: block;
+            @include dimensions(40px, 12px);
+            background: url(images/icon-arrow.svg) center center no-repeat;
+        }
+    } 
+}
+
+div.arrows {
+    background-color: $black-text;
+    @include dimensions(120px, 60px);
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    display: flex;
+    .left-arrow, .right-arrow {
+        display: block;
+        @include dimensions(50%, 100%);
+        &:hover { 
+            background-color: $dark-grey-text;
+            cursor: pointer;
+        }
+    }
+    .left-arrow {
+        background: url(images/icon-angle-left.svg) center center no-repeat;
+    }
+    .right-arrow {
+        background: url(images/icon-angle-right.svg) center center no-repeat;
+    }
+}
+
+/* ABOUT SECTION */
+
+.about {
+    width: 100%;
+    position: relative;
+    @include flex-pos(space-between, center);
+    .img1, .img2 { @include dimensions(350px, 240px);}
+    .img1 { @include bgd-image(url(images/image-about-dark.jpg), center, center, cover);}
+    .img2 { @include bgd-image(url(images/image-about-light.jpg), center, center, cover);}
+    .about-content {
+        width: 40%;
+        h5 {
+            @include text(Spartan-Bold, $black-text);
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            margin: 3rem 0 0 2.5rem;
+        }
+        p {
+            @include text(Spartan-Medium, $grey-text);
+            margin: 1rem 2rem 0 2.5rem;
+            line-height: 1.2rem;
+            font-size: 11px;
+        }
+    }
+}
+
+p.name {
+    @include text(Spartan-Medium, $grey-text);
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1100px) {
+    div.slide {
+        .img-1, .img-2, .img-3 { @include dimensions(57%, 400px);}
+        .content-1, .content-2, .content-3 {
+            width: 40%;
+            h2 { font-size: 1.6rem;}
+            .shop {
+                a { width: 80%;}
+                h4 { font-size: 11px;}
+            }
+        }
+    }
+    div.arrows { left: 57%;}
+}
+@media only screen and (max-width: 1024px) {
+    div.slide {
+        .img-1, .img-2, .img-3 { width: 550px;}
+        .content-1, .content-2, .content-3 {
+            h2 { font-size: 1.4rem;}
+        }
+    }
+    div.arrows { left: 550px;}
+}
+@media only screen and (max-width: 980px) {
+    header {
+        nav { width: 23%;}
+    }
+    div.slide {
+        .img-1, .img-2, .img-3 {width: 500px;}
+    }
+    div.arrows { left: 500px;}
+    .about {
+        .img1, .img2 { @include dimensions(320px, 260px);}
+        .about-content { 
+            width: 50%;
+            h5 { margin-top: 2rem;}
+        }
+    }
+}
+@media only screen and (max-width: 860px) {
+    div.slide{
+        flex-direction: column;
+        .img-1, .img-2, .img-3 {
+            @include dimensions(100%, 450px);
+            background-position: 20% left;
+        }
+        .content-1, .content-2, .content-3 {
+            width: 100%;
+            margin-bottom: 4rem;
+            @include flex-pos(center, center);
+            flex-direction: column;
+            h2 {
+                width: 70%;
+                margin: 4rem 0 0 0;
+            }
+            p {
+                width: 70%;
+                margin-left: 0;
+            }
+            .shop {
+                width: 70%;
+                margin-left: 0;
+                a { width: 40%;}
+            }
+        }
+    }
+    div.arrows { 
+        top: 390px;
+        left: unset;
+        bottom: unset;
+        right: 0;
+    }
+    .about {
+        flex-direction: column;
+        .img1, .img2 { @include dimensions(70%, 350px);}
+        .about-content {
+            width: 70%;
+            margin: 3rem 0;
+            h5, p { 
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 700px) {
+    header {
+        nav { width: 27%;}
+    }
+    div.slide {
+        .content-1, .content-2, .content-3 {
+            .shop {
+                a { width: 50%;}
+            }
+        }
+    }
+}
+@media only screen and (max-width: 580px) {
+    div.slide {
+        .img-1, .img-2, .img-3 { height: 350px;}
+        .content-1, .content-2, .content-3 {
+            .shop {
+                a { width: 58%;}
+            }
+        }
+    }
+    div.arrows { top: 290px;}
+    .about {
+        .img1, .img2 { height: 300px;}
+    }
+}
+@media only screen and (max-width: 480px) {
+    header {
+        nav { display: none;}
+        .ham-nav {
+            display: block;
+            a { 
+            display: block;
+            @include dimensions(20px, 14px);
+            background: url(images/icon-hamburger.svg) center center no-repeat;
+            margin: 0 3.3rem 0 3rem; 
+            }
+        }
+        #hamNav {
+            @include flex-pos(flex-start, center);
+            @include dimensions(100%, 100vh);
+            background: linear-gradient(to bottom, white 55%, hsla(0%, 0%, 27%, 0.6) 50%);
+            position: absolute;
+            display: none;
+            .close-nav {
+                display: block;
+                margin-left: 3rem;
+                a {
+                    display: block;
+                    @include dimensions(20px, 16px);
+                    background: url(images/icon-close.svg) center center no-repeat;
+                }
+            }
+            nav {
+                display: block;
+                .nav {
+                    li > a { color: $black-text;}
+                }
+            }
+        }
+        div#hamNav:target { display: flex;}
+    }
+    div.slide {
+        .img-1, .img-2, .img-3 { height: 360px;}
+        .img-1 { @include bgd-image(url(images/mobile-image-hero-1.jpg), center, 80%, cover);}
+        .img-2 { @include bgd-image(url(images/mobile-image-hero-2.jpg), center, 80%, cover);}
+        .imag-3 { @include bgd-image(url(images/mobile-image-hero-3.jpg), center, 80%, cover);}
+        .content-1, .content-2, .content-3 { 
+        .shop {
+            a { 
+                width: 70%;
+                h4 {letter-spacing: 0.4rem;}
+            }
+        }
+    }
+    }
+    div.arrows { top: 300px;}
+    .about {
+        .img1, .img2 { width: 100%;}
+    }
+}
+@media only screen and (max-width: 430px) {
+    header {
+        .ham-nav {
+            a { margin-right: 2.7rem;}
+        }
+    }
+}
+@media only screen and (max-width: 400px) {
+    header {
+        .ham-nav {
+            a { margin-right: 2rem;}
+        }
+    }
+}
