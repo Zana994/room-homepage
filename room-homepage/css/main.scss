@@ -326,7 +326,7 @@ p.name {
             /*@include flex-pos(center, center);*/
             display: flex;
             @include dimensions(100%, 100vh);
-            background: linear-gradient(to bottom, white 13%, hsla(0%, 0%, 27%, 0.6) 5%);
+            background: linear-gradient(to bottom, white 70px, hsla(0%, 0%, 27%, 0.6) 5%);
             position: absolute;
             top: 0;
             display: none;
