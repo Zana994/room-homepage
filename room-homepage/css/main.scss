@@ -323,22 +323,28 @@ p.name {
             }
         }
         #hamNav {
-            @include flex-pos(flex-start, center);
+            /*@include flex-pos(center, center);*/
+            display: flex;
             @include dimensions(100%, 100vh);
-            background: linear-gradient(to bottom, white 55%, hsla(0%, 0%, 27%, 0.6) 50%);
+            background: linear-gradient(to bottom, white 13%, hsla(0%, 0%, 27%, 0.6) 5%);
             position: absolute;
+            top: 0;
             display: none;
             .close-nav {
                 display: block;
+                height: 14px;
+                margin-top: 30.5px;
                 margin-left: 3rem;
                 a {
                     display: block;
-                    @include dimensions(20px, 16px);
+                    @include dimensions(20px, 14px);
                     background: url(images/icon-close.svg) center center no-repeat;
                 }
             }
             nav {
                 display: block;
+                height: 14px;
+                margin-top: 25px;
                 .nav {
                     li > a { color: $black-text;}
                 }
